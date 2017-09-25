@@ -41,7 +41,6 @@ void GroceryBill::scanItemsFromFile(string filename) {
 	// To be completed
 	// HINT: Look at code in PriceList::createPriceListFromDatafile(string filename)
 	ifstream myfile(filename);
-	//size = 0;
 	
 	if (myfile.is_open()) {
 		cout << "Successfully opened file " << filename << endl;
