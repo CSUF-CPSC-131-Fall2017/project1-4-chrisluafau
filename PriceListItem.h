@@ -11,8 +11,14 @@ public:
 	string getCode();
 	double getPrice();
 	bool isTaxable();
+	friend class PriceList;
+	friend class GroceryBill;
 private:
 	// any private member variables and methods go here
 	// TO BE COMPLETED
-
+	string itemName;
+	string itemCode;
+	double itemPrice;
+	bool itemTaxable;
+	PriceListItem* link;
 };
