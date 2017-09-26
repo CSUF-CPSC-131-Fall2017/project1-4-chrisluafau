@@ -6,7 +6,6 @@ using namespace std;
 GroceryBill::GroceryBill()
 {
 	this->plist = nullptr;
-	gbill;
 	tax = 0.0;
 	counting = 0;
 	total = 0;
@@ -21,6 +20,9 @@ GroceryBill::~GroceryBill()
 	tax = 0;
 	counting = 0;
 	total = 0;
+	delete plist;
+	delete head;
+	delete temp;
 }
 GroceryBill::GroceryBill(const PriceList *priceList, double taxRate) {
 	// To be completed
@@ -29,8 +31,6 @@ GroceryBill::GroceryBill(const PriceList *priceList, double taxRate) {
 	tax = taxRate;
 	plist = new PriceList();
 }
-
-
 
 void GroceryBill::scanItem(string scanCode, double quantity) {
 	// To be completed
