@@ -6,6 +6,7 @@ using namespace std;
 class PriceListItem {
 public:
 	PriceListItem();
+	~PriceListItem();
 	PriceListItem(const string &itemName, const string &code, double price, bool taxable);
 	string getItemName();
 	string getCode();

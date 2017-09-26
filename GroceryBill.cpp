@@ -3,14 +3,33 @@
 #include <fstream>
 
 using namespace std;
-
+GroceryBill::GroceryBill()
+{
+	this->plist = nullptr;
+	gbill;
+	tax = 0.0;
+	counting = 0;
+	total = 0;
+	this->head = nullptr;
+	this->temp = nullptr;
+}
+GroceryBill::~GroceryBill()
+{
+	this->plist = nullptr;
+	this->head = nullptr;
+	this->temp = nullptr;
+	tax = 0;
+	counting = 0;
+	total = 0;
+}
 GroceryBill::GroceryBill(const PriceList *priceList, double taxRate) {
 	// To be completed
 	head = priceList->head;
 	temp = priceList->temp;
 	tax = taxRate;
-
+	plist = new PriceList();
 }
+
 
 
 void GroceryBill::scanItem(string scanCode, double quantity) {
@@ -24,7 +43,7 @@ void GroceryBill::scanItem(string scanCode, double quantity) {
 	gbill.itemPrice *= quantity;
 	if (gbill.itemTaxable == true)
 	{
-		total += gbill.getPrice()*(1+(tax / 100));
+		total += gbill.getPrice()*(1 + (tax / 100));
 	}
 	else
 	{
@@ -41,7 +60,7 @@ void GroceryBill::scanItemsFromFile(string filename) {
 	// To be completed
 	// HINT: Look at code in PriceList::createPriceListFromDatafile(string filename)
 	ifstream myfile(filename);
-	
+
 	if (myfile.is_open()) {
 		cout << "Successfully opened file " << filename << endl;
 		string code;
@@ -49,7 +68,7 @@ void GroceryBill::scanItemsFromFile(string filename) {
 		while (myfile >> code >> quantity) {
 			// cout << code << " " << taxable << endl;
 			scanItem(code, quantity);
-			
+
 		}
 		myfile.close();
 	}

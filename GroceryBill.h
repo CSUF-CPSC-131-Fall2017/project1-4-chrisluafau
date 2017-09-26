@@ -4,7 +4,8 @@
 
 class GroceryBill {
 public:
-	GroceryBill() {};
+	GroceryBill();
+	~GroceryBill();
 	GroceryBill(const PriceList *priceList, double taxRate);
 	void scanItem(string scanCode, double quantity); // add item and quantity to bill; throw exception if item's code is not found in the pricelist
 	void scanItemsFromFile(string filename); // Scan multiple codes and quantities from the given text file
@@ -13,7 +14,7 @@ public:
 
 private:
 	// any private member variables and methods go here
-	PriceList* plist = new PriceList();
+	PriceList* plist;
 	PriceListItem gbill;
 	double tax;
 	int counting;

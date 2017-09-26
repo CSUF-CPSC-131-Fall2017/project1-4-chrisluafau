@@ -7,8 +7,20 @@
 
 using namespace std;
 
-PriceList::PriceList() {};
+PriceList::PriceList() {
+	this->head = nullptr;
+	this->temp = nullptr;
+	size = 0;
+	max = 1000000;
+};
 // Load information from a text file with the given filename.
+PriceList::~PriceList()
+{
+	this->head = nullptr;
+	this->temp = nullptr;
+	delete head;
+	delete temp;
+};
 void PriceList::createPriceListFromDatafile(string filename) {
 	ifstream myfile(filename);
 	size = 0;
@@ -32,25 +44,22 @@ void PriceList::createPriceListFromDatafile(string filename) {
 bool PriceList::isValid(string code) const {
 	// TO BE COMPLETED
 	PriceListItem* tmp = head;
-	
+
 	if (tmp != NULL)
 	{
 		if (tmp->getCode() == code)
 		{
-
 			return true;
 		}
 		while (tmp->link != NULL)
 		{
 			if (tmp->getCode() == code)
 			{
-
 				return true;
 			}
 			tmp = tmp->link;
 		}
 	}
-
 	return false;
 }
 
