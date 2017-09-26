@@ -30,6 +30,8 @@ GroceryBill::GroceryBill(const PriceList *priceList, double taxRate) {
 	temp = priceList->temp;
 	tax = taxRate;
 	plist = new PriceList();
+	plist->head = head;
+	//plist = nullptr;
 }
 
 void GroceryBill::scanItem(string scanCode, double quantity) {
