@@ -30,13 +30,14 @@ GroceryBill::GroceryBill(const PriceList *priceList, double taxRate) {
 	temp = priceList->temp;
 	tax = taxRate;
 	plist = new PriceList();
-	plist->head = head;
+	total = 0.0;
+	counting = 0;
 	//plist = nullptr;
 }
 
 void GroceryBill::scanItem(string scanCode, double quantity) {
 	// To be completed
-	//plist->head = head;
+	plist->head = head;
 	if (plist->isValid(scanCode) == false)
 		throw runtime_error("Item not found");
 	PriceListItem temp = plist->getItem(scanCode);
