@@ -6,14 +6,14 @@
 #include "PriceListItem.h"
 
 using namespace std;
-
+//default constructor
 PriceList::PriceList() {
 	this->head = nullptr;
 	this->temp = nullptr;
 	size = 0;
 	max = 1000000;
 };
-// Load information from a text file with the given filename.
+//destructor
 PriceList::~PriceList()
 {
 	this->head = nullptr;
@@ -21,6 +21,7 @@ PriceList::~PriceList()
 	delete head;
 	delete temp;
 };
+//reading from txt file
 void PriceList::createPriceListFromDatafile(string filename) {
 	ifstream myfile(filename);
 	size = 0;
@@ -42,9 +43,7 @@ void PriceList::createPriceListFromDatafile(string filename) {
 
 // return true only if the code is valid
 bool PriceList::isValid(string code) const {
-	// TO BE COMPLETED
 	PriceListItem* tmp = head;
-
 	if (tmp != NULL)
 	{
 		if (tmp->getCode() == code)
@@ -65,7 +64,6 @@ bool PriceList::isValid(string code) const {
 
 // return price, item name, taxable? as an ItemPrice object; throw exception if code is not found
 PriceListItem PriceList::getItem(string code) const {
-	// TO BE COMPLETED
 	PriceListItem *temp = head;
 	if (temp != NULL)
 	{
@@ -88,7 +86,6 @@ PriceListItem PriceList::getItem(string code) const {
 
 // add to the price list information about a new item
 void PriceList::addEntry(string itemName, string code, double price, bool taxable) {
-	// TO BE COMPLETED
 	if (size >= max)
 		return;
 	PriceListItem* newEntry = new PriceListItem(itemName, code, price, taxable);

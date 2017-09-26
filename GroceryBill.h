@@ -17,7 +17,6 @@ private:
 	PriceList* plist;
 	PriceListItem gbill;
 	double tax;
-	int counting;
 	double total;
 	PriceListItem* head;
 	PriceListItem* temp;

@@ -15,17 +15,11 @@ public:
 	PriceListItem getItem(string code) const; // return price, item name, taxable? as an PriceListItem object; throw exception if code is not found
 	PriceList(const PriceList &item);
 	PriceList& operator = (const PriceList& item);
-	//friend class PriceListItem;
 	friend class GroceryBill;
 
 private:
-	// Add private member variables for your class along with any 
-	// other variables required to implement the public member functions
-	// TO BE COMPLETED
 	PriceListItem* head;
 	PriceListItem* temp;
 	int size;
 	int max;
-
-
 };

@@ -16,7 +16,6 @@ public:
 	friend class GroceryBill;
 private:
 	// any private member variables and methods go here
-	// TO BE COMPLETED
 	string itemName;
 	string itemCode;
 	double itemPrice;

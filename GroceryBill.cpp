@@ -3,40 +3,37 @@
 #include <fstream>
 
 using namespace std;
+//default constructor
 GroceryBill::GroceryBill()
 {
 	this->plist = nullptr;
 	tax = 0.0;
-	counting = 0;
 	total = 0;
 	this->head = nullptr;
 	this->temp = nullptr;
 }
+//destructor
 GroceryBill::~GroceryBill()
 {
 	this->plist = nullptr;
 	this->head = nullptr;
 	this->temp = nullptr;
 	tax = 0;
-	counting = 0;
 	total = 0;
 	delete plist;
 	delete head;
 	delete temp;
 }
+//construct w/ const and double
 GroceryBill::GroceryBill(const PriceList *priceList, double taxRate) {
-	// To be completed
 	head = priceList->head;
 	temp = priceList->temp;
 	tax = taxRate;
 	plist = new PriceList();
 	total = 0.0;
-	counting = 0;
-	//plist = nullptr;
 }
-
+//scan
 void GroceryBill::scanItem(string scanCode, double quantity) {
-	// To be completed
 	plist->head = head;
 	if (plist->isValid(scanCode) == false)
 		throw runtime_error("Item not found");
@@ -52,7 +49,6 @@ void GroceryBill::scanItem(string scanCode, double quantity) {
 	{
 		total += gbill.getPrice();
 	}
-	counting++;
 }
 
 // Scan multiple codes and quantities from the given text file
@@ -69,9 +65,7 @@ void GroceryBill::scanItemsFromFile(string filename) {
 		string code;
 		double quantity;
 		while (myfile >> code >> quantity) {
-			// cout << code << " " << taxable << endl;
 			scanItem(code, quantity);
-
 		}
 		myfile.close();
 	}
@@ -81,7 +75,6 @@ void GroceryBill::scanItemsFromFile(string filename) {
 
 // return the total cost of all items scanned
 double GroceryBill::getTotal() {
-	// To be completed
 	return total;
 }
 
@@ -95,7 +88,6 @@ double GroceryBill::getTotal() {
 //Potatoes_red	13.446
 //TOTAL 	28.3765
 void GroceryBill::printBill() {
-	// To be completed
 	PriceListItem* n = head;
 	if (n->link == NULL)
 	{
@@ -111,7 +103,5 @@ void GroceryBill::printBill() {
 		cout << endl;
 		n = n->link;
 	}
-
-
 }
 
